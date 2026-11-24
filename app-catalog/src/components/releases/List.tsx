@@ -678,7 +678,7 @@ export default function ReleaseList({ fetchReleases = listReleases }: ReleaseLis
               getter: release => formatVersion(latestMap[release?.name]),
             },
             {
-              label: t('Version'),
+              label: t('Revision'),
               getter: release => release.version,
               sort: true,
             },

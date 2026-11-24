@@ -22,7 +22,7 @@ const mockReleases = [
         icon: 'https://via.placeholder.com/50',
       },
     },
-    version: 1,
+    version: 10,
     info: {
       status: 'deployed',
       last_deployed: '2023-10-23T12:00:00Z',
@@ -30,7 +30,7 @@ const mockReleases = [
   },
   {
     name: 'example-release-2',
-    namespace: 'default',
+    namespace: 'production',
     chart: {
       metadata: {
         name: 'example-chart-2',
@@ -76,4 +76,14 @@ const Template: StoryFn<ComponentProps<typeof ReleaseList>> = args => (
 export const Default = Template.bind({});
 Default.args = {
   fetchReleases: () => Promise.resolve({ releases: mockReleases }),
+};
+
+export const Loading = Template.bind({});
+Loading.args = {
+  fetchReleases: () => new Promise(() => {}),
+};
+
+export const Empty = Template.bind({});
+Empty.args = {
+  fetchReleases: () => Promise.resolve({ releases: [] }),
 };

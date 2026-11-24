@@ -1,3 +1,4 @@
+import { useTranslation } from '@kinvolk/headlamp-plugin/lib';
 import { Autocomplete, Box, TextField } from '@mui/material';
 import { useEffect, useRef, useState } from 'react';
 
@@ -18,6 +19,7 @@ export function ReleaseFilters({
   onNameFilterChange,
   onNamespaceFilterChange,
 }: ReleaseFiltersProps) {
+  const { t } = useTranslation();
   const [inputValue, setInputValue] = useState(nameFilter);
   const timeoutRef = useRef<NodeJS.Timeout>();
 
@@ -49,7 +51,7 @@ export function ReleaseFilters({
           margin: { xs: '0.5rem 0', sm: '0 1rem' },
         }}
         id="outlined-basic"
-        label="Search"
+        label={t('Search')}
         value={inputValue}
         onChange={event => {
           setInputValue(event.target.value);
@@ -63,7 +65,7 @@ export function ReleaseFilters({
         onChange={(event, newValue) => {
           onNamespaceFilterChange(newValue || '');
         }}
-        renderInput={params => <TextField {...params} label="Namespace" size="small" />}
+        renderInput={params => <TextField {...params} label={t('Namespace')} size="small" />}
       />
     </Box>
   );
